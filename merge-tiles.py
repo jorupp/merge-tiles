@@ -15,8 +15,8 @@ if not os.path.isdir(dir):
 xvalues = sorted([int(f.path.split(os.path.sep)[-1]) for f in os.scandir(dir) if f.is_dir()])
 yvalues = sorted([int(f.path.split(os.path.sep)[-1].split('.')[0]) for f in os.scandir(os.path.join(dir, str(xvalues[0]))) if f.is_file()])
 
-xMax = max(xvalues)-min(xvalues)
-yMax = max(yvalues)-min(yvalues)
+xMax = max(xvalues)-min(xvalues)+1
+yMax = max(yvalues)-min(yvalues)+1
 
 tileFileFormat = os.path.join(os.path.join(dir, '{}'), '{}.png')
 sampleImage = Image.open(tileFileFormat.format(xvalues[0], yvalues[0]))
