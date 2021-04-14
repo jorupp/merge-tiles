@@ -34,7 +34,7 @@ bar = progressbar.ProgressBar(max_value=xMax*yMax)
 for x in range(xMax):
     for y in range(yMax):
         bar.update(x*yMax+y)
-        tileFile = tileFileFormat.format(xvalues[x], yvalues[y])
+        tileFile = tileFileFormat.format(xvalues[0]+x, yvalues[0]+y)
         if os.path.isfile(tileFile):
             tileImage = Image.open(tileFile)
             image.paste(tileImage, [ x * width, y * height ])
@@ -43,7 +43,7 @@ for x in range(xMax):
 
 bar.finish()
 
-outputImageFile = os.path.join(dir, 'output.png')
+outputImageFile = os.path.join(dir, 'output.jpg')
 print('writing output image to {}'.format(outputImageFile))
 image.save(outputImageFile)
 print('finished writing output image to {}'.format(outputImageFile))
